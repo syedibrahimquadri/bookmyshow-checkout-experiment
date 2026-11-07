@@ -1,0 +1,31 @@
+/* Showtimes */
+.hero{background:var(--night);color:#fff;padding:6px 16px 18px;display:flex;gap:14px;align-items:flex-end}
+.poster{width:96px;height:132px;border-radius:12px;flex:none;background:
+  radial-gradient(circle at 70% 25%,#FFB45E 0 14%,transparent 15%),
+  linear-gradient(170deg,#3A1F4D 0%,#8C2B3A 52%,#E58A3A 100%);
+  display:grid;place-items:end center;padding-bottom:10px;box-shadow:0 10px 24px -10px #000a}
+.poster-hi{font-family:var(--font-display);font-size:24px;line-height:.85;color:#FFE7B8;text-align:center;text-shadow:0 2px 0 #0005}
+.hero-info p{font-size:13.5px;color:#C9CBE0;line-height:1.5}
+.rating{display:flex;align-items:center;gap:6px;font-size:14px!important;color:#fff!important}
+.rating svg{width:18px;height:18px;color:var(--brand)}
+.hype{display:inline-block;margin-top:6px;background:#ffffff1a;color:#fff!important;border-radius:999px;padding:2px 10px 1px;font-size:12.5px!important}
+
+.dates{display:flex;gap:8px;padding:14px 16px 4px;background:#fff}
+.date{width:56px;border-radius:12px;padding:6px 0 4px;display:flex;flex-direction:column;align-items:center;line-height:1.1;color:var(--muted)}
+.date b{font-size:20px;color:var(--ink);font-weight:600}
+.date small{font-size:11px;font-weight:600}
+.date[aria-selected="true"]{background:var(--brand);color:#fff}
+.date[aria-selected="true"] b{color:#fff}
+
+.from-price{background:#fff;padding:6px 16px 12px;font-size:13.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+
+.cinemas{display:flex;flex-direction:column;gap:10px;padding:10px 12px 24px}
+.cinema{background:#fff;border-radius:16px;padding:14px 14px 12px}
+.cinema h3{font-size:15px;font-weight:600}
+.cinema > p{font-size:12.5px;color:var(--go);margin:1px 0 10px}
+.time-list{display:flex;flex-wrap:wrap;gap:8px}
+.time{border:1.5px solid #A9D9BE;color:var(--go);border-radius:10px;padding:7px 12px 5px;font-size:13.5px;font-weight:600;display:flex;flex-direction:column;align-items:center;line-height:1.15;min-width:84px}
+.time small{font-size:10.5px;font-weight:600}
+.time.filling{border-color:#F0C38F;color:var(--warn)}
+.time:hover{background:var(--go-soft)}
+.time.filling:hover{background:var(--warn-soft)}

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>BookMyShow Checkout Experiment</title>
+    <meta name="description" content="A clickable concept prototype: transparent pricing and movie moments to reduce booking abandonment at checkout. Personal product case study by Syed Ibrahim Quadri. Not affiliated with BookMyShow." />
+    <meta name="robots" content="noindex" />
+    <meta property="og:title" content="Why people pick seats but don't pay: a checkout experiment" />
+    <meta property="og:description" content="The price you see is the price you pay, plus movie moments while your payment goes through. A clickable concept prototype and personal product case study." />
+    <meta property="og:image" content="%SITE_URL%/og-image.png" />
+    <meta property="og:url" content="%SITE_URL%/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Teko:wght@500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <aside class="rail" aria-label="Prototype guide">
+      <h1>BookMyShow checkout</h1>
+      <p class="lead">A concept prototype for people who pick seats but don't pay. Tap through the phone, or jump to a screen here.</p>
+      <ol id="steps">
+        <li><button data-go="shows"><span class="step">1</span><span><span class="t">Showtimes</span><span class="d">Tickets from ₹199, with the ₹49 fee already included</span></span></button></li>
+        <li><button data-go="seats"><span class="step">2</span><span><span class="t">Seats</span><span class="d">Pick how many, then one tap selects them side by side</span></span></button></li>
+        <li><button data-go="summary"><span class="step">3</span><span><span class="t">Confirm booking</span><span class="d">Same total as the seat map, with movie moments below</span></span></button></li>
+        <li><button data-go="payment"><span class="step">4</span><span><span class="t">Payment</span><span class="d">UPI, card or pay later, with seats held for 8 minutes</span></span></button></li>
+        <li><button data-go="paying"><span class="step">5</span><span><span class="t">Paying</span><span class="d">Dialogues and scenes from the film while UPI is approved</span></span></button></li>
+        <li><button data-go="ticket"><span class="step">6</span><span><span class="t">Ticket</span><span class="d">QR code and the scenes to watch for</span></span></button></li>
+      </ol>
+      <p class="foot">A personal product case study by Syed Ibrahim Quadri. Not affiliated with or endorsed by BookMyShow. The film, cinemas and prices are made up, and nothing on this page takes real payments.</p>
+    </aside>
+
+    <div class="device">
+      <div class="concept" role="note">
+        <span><span class="concept-long">Concept prototype. </span>Not affiliated with BookMyShow.</span>
+      </div>
+
+
+      <div class="phone">
+        <div class="screen-wrap" data-screen="shows">
+          <div class="notch" aria-hidden="true"></div>
+          <div class="status" aria-hidden="true"><span>9:41</span><span>5G ▮▮▮</span></div>
+
+          <!-- 1. SHOWTIMES -->
+          <section class="screen" id="shows" aria-label="Showtimes">
+            <header class="bar dark">
+              <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></span>
+              <div class="bar-title"><h2>Daroga Dilwala</h2><p>Hindi, UA13+</p></div>
+              <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg></span>
+            </header>
+
+            <div class="hero">
+              <div class="poster" aria-hidden="true"><span class="poster-hi">दरोगा<br />दिलवाला</span></div>
+              <div class="hero-info">
+                <p class="rating"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z" fill="currentColor"/></svg><b>8.6/10</b> 48.2K votes</p>
+                <p class="meta">2h 34m, Action, Comedy</p>
+                <p class="hype">Trailer: 6.4 crore views</p>
+              </div>
+            </div>
+
+            <div class="dates" role="tablist" aria-label="Dates">
+              <button role="tab" aria-selected="false" class="date"><small>SAT</small><b>7</b><small>NOV</small></button>
+              <button role="tab" aria-selected="true" class="date"><small>SUN</small><b>8</b><small>NOV</small></button>
+              <button role="tab" aria-selected="false" class="date"><small>MON</small><b>9</b><small>NOV</small></button>
+            </div>
+
+            <p class="from-price" id="fromPrice"></p>
+
+            <div class="cinemas" id="cinemas"></div>
+          </section>
+
+          <!-- 2. SEATS -->
+          <section class="screen off-right" id="seats" aria-label="Seat selection">
+            <header class="bar">
+              <button class="icon-btn" data-back aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <div class="bar-title"><h2>Daroga Dilwala</h2><p id="seatShowLine">Galaxy Cinemas: Indiranagar, Sun 8 Nov</p></div>
+              <button class="qty-pill" id="qtyPill" aria-label="Change number of seats"><span id="qtyPillText">2 tickets</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 10-10-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+            </header>
+            <div class="times" id="seatTimes"></div>
+            <div class="seatmap" id="seatmap" aria-label="Seat map"></div>
+            <div class="screen-line" aria-hidden="true"><span></span><p>Screen this way</p></div>
+            <div class="legend" aria-hidden="true"><span><i class="seat"></i>Available</span><span><i class="seat sel"></i>Selected</span><span><i class="seat sold"></i>Sold</span></div>
+            <div class="bottom-bar">
+              <div class="total"><b class="num" id="seatAmount">₹0</b><small id="seatNote">Select seats</small></div>
+              <button class="cta" id="seatCta" data-go="summary" disabled>Proceed</button>
+            </div>
+          </section>
+
+          <!-- 3. CONFIRM BOOKING (mirrors the real screen, with movie moments in the empty space) -->
+          <section class="screen off-right light-page" id="summary" aria-label="Confirm booking">
+            <header class="bar plain">
+              <button class="icon-btn" data-back aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <div class="bar-title"><h2>Confirm booking</h2></div>
+            </header>
+
+            <div class="card summary-card">
+              <div class="summary-top">
+                <div>
+                  <h3>Daroga Dilwala</h3>
+                  <p class="when" id="sumWhen">Sun, 8 Nov, 2026 | 7:15 PM</p>
+                  <p>Hindi (2D)</p>
+                  <p id="sumSeats">CL-D6,D7</p>
+                  <p id="sumWhere">Galaxy Cinemas: Indiranagar (AUDI 2)</p>
+                </div>
+                <div class="summary-side">
+                  <b class="num" id="sumCount">2</b>
+                  <span class="mticket"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 10-10-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>M-Ticket</span>
+                </div>
+              </div>
+              <div class="cancel-note"><b>Cancellation available</b>This venue supports booking cancellation. To know more, <span class="link">view cancellation policy</span></div>
+            </div>
+
+            <div class="card price">
+              <button class="line expand" aria-expanded="false" data-expand="ticketsBreak"><span>Ticket(s) price <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span class="num" id="sumTickets"></span></button>
+              <div class="sub-lines" id="ticketsBreak" hidden></div>
+              <button class="line expand" aria-expanded="false" data-expand="feeBreak"><span>Convenience fees <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span class="num" id="sumFee"></span></button>
+              <div class="sub-lines" id="feeBreak" hidden></div>
+              <div class="line total"><span>Order total</span><b class="num" id="sumTotal"></b></div>
+              <p class="price-note ok" id="sumNote"></p>
+            </div>
+
+            <div class="card contact">
+              <div class="contact-head"><h3>For sending booking details</h3><span class="edit" data-toast><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 10-10-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Edit</span></div>
+              <p id="contactLine"></p>
+              <p id="contactState"></p>
+            </div>
+
+            <button class="card offers-row" data-toast><span class="offer-icon" aria-hidden="true">%</span><b>Apply offers</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+
+            <p class="card consent">By proceeding, I express my consent to complete this transaction.</p>
+
+            <div class="moments light" id="confirmMoments">
+              <div class="moments-head"><h3>Get ready for Daroga Dilwala</h3><p>Dialogues, facts and scenes fans can't stop talking about</p></div>
+              <div class="carousel" id="confirmCarousel" tabindex="0" aria-label="Movie moments"></div>
+              <div class="dots" id="confirmDots" aria-hidden="true"></div>
+            </div>
+
+            <div class="bottom-bar">
+              <div class="total"><small>Total</small><b class="num" id="confirmAmount"></b></div>
+              <button class="cta wide" data-go="payment">Continue</button>
+            </div>
+          </section>
+
+          <!-- 4. PAYMENT OPTIONS -->
+          <section class="screen off-right" id="payment" aria-label="Payment options">
+            <header class="bar">
+              <button class="icon-btn" data-back aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <div class="bar-title"><h2>Payment options</h2></div>
+              <span class="timer" id="holdTimer" aria-live="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg><span class="num" id="holdClock">8:00</span></span>
+            </header>
+
+            <div class="amount-strip"><span>Amount payable</span><b class="num" id="payStripAmount"></b></div>
+
+            <div class="teaser" id="teaser">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 9l2-5 4 1-2 5M10 5l4 1-2 5M14 6l4 1-1.4 3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+              <p id="teaserText"></p>
+            </div>
+
+            <div class="card pay-methods">
+              <h3>Pay with</h3>
+              <div role="radiogroup" aria-label="Payment method" id="methods"></div>
+            </div>
+
+            <div class="bottom-bar">
+              <div class="total"><small>Total</small><b class="num" id="payAmount"></b></div>
+              <button class="cta wide" id="payCta" data-go="paying">Pay</button>
+            </div>
+          </section>
+
+          <!-- 5. PAYING -->
+          <section class="screen off-right" id="paying" aria-label="Payment in progress">
+            <header class="bar">
+              <button class="icon-btn" data-back aria-label="Cancel payment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <div class="bar-title"><h2>Complete your payment</h2></div>
+            </header>
+
+            <div class="status-card">
+              <div class="ring" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" class="track"/><circle cx="32" cy="32" r="28" class="arc"/></svg><span class="num" id="reqClock">5:00</span></div>
+              <div>
+                <h3 id="payTitle">Approve ₹398 in your UPI app</h3>
+                <p id="paySub">Open any UPI app on this phone and approve the request.</p>
+                <p class="locked"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span id="lockedSeats">Seats D6, D7 are locked for you while you pay</span></p>
+              </div>
+            </div>
+
+            <div class="moments" id="moments">
+              <div class="moments-head"><h3>While you approve</h3><p>Moments from the film everyone's talking about</p></div>
+              <div class="carousel" id="payingCarousel" tabindex="0" aria-label="Movie moments"></div>
+              <div class="dots" id="payingDots" aria-hidden="true"></div>
+            </div>
+
+            <p class="plain-wait" id="plainWait">Don't close this screen. We'll take you to your ticket as soon as the payment goes through.</p>
+
+            <div class="proto-box">
+              <p>Prototype: there's no real UPI app here.</p>
+              <button class="cta" data-go="ticket" id="approveBtn">Approve payment</button>
+            </div>
+          </section>
+
+          <!-- 6. TICKET -->
+          <section class="screen off-right" id="ticket" aria-label="Your ticket">
+            <header class="bar dark">
+              <button class="icon-btn" data-reset aria-label="Close and start again"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <div class="bar-title"><h2>Booking confirmed</h2></div>
+            </header>
+
+            <div class="confirm-banner"><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></span><p>Your tickets are booked. Enjoy the show.</p></div>
+
+            <div class="ticket-card">
+              <div class="ticket-top">
+                <div class="mini-poster" aria-hidden="true"><span>दरोगा<br />दिलवाला</span></div>
+                <div>
+                  <h3>Daroga Dilwala</h3>
+                  <p>Hindi, 2D, UA13+</p>
+                  <p class="strong" id="tkWhen">Sun, 8 Nov, 7:15 PM</p>
+                  <p id="tkWhere">Galaxy Cinemas: Indiranagar</p>
+                </div>
+              </div>
+              <div class="perf" aria-hidden="true"></div>
+              <div class="ticket-mid">
+                <canvas id="qr" width="116" height="116" aria-label="Ticket QR code (sample)"></canvas>
+                <div>
+                  <p class="label">Seats</p>
+                  <p class="big" id="tkSeats"></p>
+                  <p class="label">Screen</p>
+                  <p class="strong">Audi 2</p>
+                  <p class="label">Booking ID</p>
+                  <p class="strong num">BKX7Q4K2</p>
+                </div>
+              </div>
+              <div class="ticket-foot"><span>Total paid</span><b class="num" id="tkTotal"></b></div>
+              <p class="ticket-note" id="tkNote"></p>
+            </div>
+
+            <div class="before" id="before">
+              <h3>Before you go: 3 moments to watch for</h3>
+              <ol id="beforeList"></ol>
+              <div class="shout" id="shout"></div>
+            </div>
+
+            <div class="ticket-actions">
+              <button class="ghost" data-toast>Add to calendar</button>
+              <button class="ghost" data-toast>Share ticket</button>
+            </div>
+          </section>
+
+          <!-- "How many seats?" sheet, shown over the seat map -->
+          <div class="sheet-backdrop" id="qtySheet" hidden>
+            <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="qtyTitle">
+              <span class="sheet-handle" aria-hidden="true"></span>
+              <h3 id="qtyTitle">How many seats?</h3>
+              <div class="qty-art" id="qtyArt" aria-hidden="true"></div>
+              <div class="qty-row" role="radiogroup" aria-label="Number of seats" id="qtyRow"></div>
+              <div class="qty-sections" id="qtySections"></div>
+              <div class="sheet-foot"><button class="cta full" id="qtyConfirm">Select seats</button></div>
+            </div>
+          </div>
+
+          <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "bookmyshow-checkout-experiment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Clickable concept prototype testing transparent pricing and movie moments to cut booking abandonment. Personal case study, not affiliated with BookMyShow.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test pricing.test.js"
+  },
+  "devDependencies": {
+    "vite": "5.4.11"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,91 @@
+/* Confirm booking (mirrors the real screen) and Payment options */
+.bar.plain{border-bottom:0;background:var(--page)}
+.light-page .card{box-shadow:0 1px 3px #1E223514}
+
+.summary-card{padding:0;overflow:hidden}
+.summary-top{display:flex;justify-content:space-between;gap:12px;padding:14px 16px 12px}
+.summary-top h3{font-size:18px;font-weight:600;margin-bottom:2px}
+.summary-top p{font-size:13.5px;color:var(--muted);line-height:1.45}
+.summary-top .when{font-size:15px;color:var(--ink)}
+.summary-side{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex:none}
+.summary-side b{font-size:18px;font-weight:600}
+.mticket{display:inline-flex;align-items:center;gap:4px;color:var(--brand);font-size:13.5px;font-weight:600}
+.mticket svg{width:14px;height:14px}
+.cancel-note{background:var(--go-soft);padding:10px 16px;font-size:13.5px;line-height:1.45;color:var(--ink)}
+.cancel-note b{display:block;font-weight:600}
+.link{color:#2A6FDB}
+
+.price .line{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;font-size:14.5px;padding:7px 0;text-align:left}
+.price .line.expand span:first-child{display:inline-flex;align-items:center;gap:4px;color:var(--muted)}
+.price .line.expand svg{width:15px;height:15px;transition:transform .2s}
+.price .line.expand[aria-expanded="true"] svg{transform:rotate(180deg)}
+.sub-lines{background:var(--page);border-radius:10px;padding:4px 10px;margin:0 0 4px}
+.sub-lines .line{font-size:13px;padding:4px 0;color:var(--muted)}
+.price .line.total{border-top:1px dashed #D3D0DC;margin-top:6px;padding-top:12px;font-weight:600;font-size:15.5px}
+.price-note{margin-top:8px;font-size:13px;border-radius:10px;padding:7px 10px;font-weight:500}
+.price-note.ok{background:var(--go-soft);color:#0F6B3D}
+
+.contact-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.contact-head h3{margin:0;font-size:15px}
+.edit{display:inline-flex;align-items:center;gap:4px;color:var(--brand);font-weight:600;font-size:14px;cursor:pointer}
+.edit svg{width:14px;height:14px}
+.contact p{font-size:13.5px;color:var(--muted);line-height:1.6}
+
+.offers-row{display:flex;align-items:center;gap:10px;width:calc(100% - 24px);text-align:left}
+.offers-row b{flex:1;font-weight:600;font-size:15px}
+.offers-row svg{width:18px;height:18px;color:var(--muted)}
+.offer-icon{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+.consent{font-size:13.5px;color:var(--ink)}
+
+/* Movie moments in the Confirm booking empty space */
+.moments.light{margin:12px 12px 14px;border-radius:18px;overflow:hidden}
+
+.bottom-bar .total small{font-size:12.5px}
+.cta.wide{min-width:170px}
+
+/* Payment options */
+.timer{display:inline-flex;align-items:center;gap:4px;font-size:13.5px;font-weight:600;color:var(--go);background:var(--go-soft);border-radius:999px;padding:4px 10px 3px;flex:none}
+.timer svg{width:15px;height:15px}
+.timer.low{color:var(--brand-deep);background:var(--brand-soft)}
+.amount-strip{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:12px 16px;font-size:14.5px;border-bottom:1px solid var(--line)}
+.amount-strip b{font-size:18px}
+
+.teaser{display:flex;gap:10px;align-items:center;margin:10px 12px 0;padding:10px 14px;border-radius:14px;background:var(--night);color:#fff}
+.teaser svg{width:22px;height:22px;color:var(--gold);flex:none}
+.teaser p{font-size:13.5px;line-height:1.35}
+
+.pay-methods{margin-bottom:12px}
+.method{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:10px 0;border-top:1px solid var(--line)}
+.method:first-child{border-top:0;padding-top:2px}
+.method b{display:block;font-size:14.5px;font-weight:600}
+.method small{display:block;font-size:12.5px;color:var(--muted)}
+.radio{width:20px;height:20px;border-radius:50%;border:2px solid #CFCBD9;flex:none}
+.method[aria-checked="true"] .radio{border:6px solid var(--brand)}
+
+/* Denser spacing on Confirm booking, close to the real app, so the movie moments show without scrolling */
+.light-page .card{margin:8px 12px 0;padding:12px 16px}
+.light-page .summary-card{padding:0}
+.light-page .summary-top{padding:12px 16px 10px}
+.light-page .summary-top h3{font-size:17px}
+.light-page .summary-top p{font-size:13px;line-height:1.4}
+.light-page .summary-top .when{font-size:14.5px}
+.light-page .cancel-note{padding:8px 16px;font-size:13px;line-height:1.4}
+.light-page .price .line{padding:4px 0}
+.light-page .price .line.total{padding-top:9px;margin-top:4px}
+.light-page .price-note{margin-top:6px;padding:5px 10px;font-size:12.5px}
+.light-page .contact p{font-size:13px;line-height:1.5}
+.light-page .contact-head{margin-bottom:2px}
+.light-page .offers-row{padding:11px 16px}
+.light-page .consent{background:none;box-shadow:none;padding:2px 16px 0;margin-top:6px;font-size:12.5px;color:var(--muted)}
+
+.moments.light{margin:10px 12px 12px;padding:12px 0 10px}
+.moments.light .moments-head{padding-bottom:4px}
+.moments.light .moments-head h3{font-size:22px}
+.moments.light .moment{min-height:148px}
+.moments.light .moment blockquote{font-size:25px;margin:4px 0 2px}
+.moments.light .roman{display:none}
+.moments.light .buzz{margin-top:6px}
+.moments.light .moment h4{font-size:25px;margin:4px 0}
+.moments.light .fact{font-size:17px;margin-top:4px}
+.moments.light .dots{margin-top:6px}
+.moments.light .moments-head p{display:none}
